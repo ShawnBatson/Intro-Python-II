@@ -1,93 +1,59 @@
 from category import Category
 
-# OOP Object Oriented Programming
-# Objects (or Classes)
-# Blueprints/Prototype
-# holds data : attributes
-# methods : functions
-
-# instance of a class - Creating an instance of an object in your code
-
-# PET BLUEPRINT CLASS
-# name
-# height
-# gender
-# species
-# diet
-# number of legs
-
-# methods:
-# feed_pet()
-# play()
-
 
 class Store:
+
     # attributes
     # name
     # categories (departments)
 
-    # constructors =  the function that runs every time you create a new instance
-    # self refers to the current instance of the Class (this in JS)
-
-    # initialize the class
+    # constructor - the function that runs every time you create a new instance
+    # self refers to the current instance of the class (in JS the word is "this")
     def __init__(self, name, categories):
         self.name = name
         self.categories = categories
 
-    # str is used to make the class a string (printing)
     def __str__(self):
+        # return a string representing the store
         output = f"Welcome to {self.name}!"
         i = 1
         for category in self.categories:
-            output += f"\n {1}. {str(category.name)}"
-            i = + 1
+            output += f'\n {i}. {category.name}'
+            i += 1
         return output
 
     def __repr__(self):
-        # also returns a string
-        # this is not as user friendly as STR
-        # This is for helping developers debug
+        # also returns a string which helps developers understand how your object is structured
         return f"self.name = {self.name} ; self.categories = {self.categories}"
 
 
 running_category = Category("Running", "All your running needs", [])
-baseball_category = Category("Baseball", "Cardinals fans only", [])
+baseball_category = Category("Baseball", "Blue Jays Fans only", [])
 basketball_category = Category("Basketball", "Indoor and outdoor products", [])
-football_category = Category("Football", "The American Kind", [])
-
-
+football_category = Category("Football", "The american kind", [])
+soccer_category = Category("Soccer", "The real football", [])
+​
 sports_store = Store("Gander Mountain", [
-                     running_category, baseball_category, basketball_category, football_category])
-produce_store = Store("Trader Joes", ["Dairy", "Meat", "Bread", "Produce"])
-
-# print(sports_store)
-# print(produce_store)
-# print(sports_store.name)
-# print(repr(sports_store))
-# print(running_category)
-
-#===================================================#
-
-# MAIN INDEX.JS FILE AREA. IN HERE FOR LECTURE
+    running_category, baseball_category, basketball_category, football_category, soccer_category])
 choice = -1
-# REPL <--- Read Evaluate Print Loop
+# REPL <- Read Evaluate Print Loop
 print(sports_store)
-print("Type 0 to quit")
-# while choice != 0:
+print("type q to quit")
 while True:
-    # Read part
-    choice = input("Please Choose a category (#): ")
+    # Read
+    choice = input("Please choose a category (#): ")
     try:
-        if (choice == "q"):
+        # Evaluate
+        if (choice == 'q'):
             break
-        # evaluate
         choice = int(choice) - 1
         if choice >= 0 and choice < len(sports_store.categories):
-            chosen_category = print(sports_store.categories[int(choice) - 1])
-            # print
+            chosen_category = sports_store.categories[choice]
+            # Print
             print(chosen_category)
         else:
             print("The number is out of range")
-    except ValueError:  # this is the error name given in terminal
-        print("Please enter a valid number")
-    finally:
+​
+except ValueError:
+    print("Please enter a valid number")
+​

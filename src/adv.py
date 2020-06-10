@@ -1,5 +1,7 @@
 from room import Room
 
+from player import Player
+
 # Declare all the rooms
 
 room = {
@@ -37,7 +39,52 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
+game = True
+
 # Make a new player object that is currently in the 'outside' room.
+
+player = Player("Shawn", "outside")
+print(f"You are currently in the {player.current_location} room")
+print(f"You see as follows: {room[player.current_location].description}")
+
+
+while game:
+    cmd = input(
+        """[n] moves north, [e] moves east, [s] moves south, [w] moves west""")
+
+    cmd_list = ['n', 'e', 's', 'w', 'q'],
+    select = False
+
+    if cmd in cmd_list and cmd == 'n':
+        try:
+            select = True
+            player.current_location = room[player.current_location].n_to.name
+        except:
+            print("You cannot move in that direction")
+
+    elif cmd in cmd_list and cmd == 'w':
+        try:
+            select = True
+            player.current_location = room[player.current_location].w_to.name
+        except:
+            print("You cannot move in that direction")
+    elif cmd in cmd_list and cmd == 'e':
+        try:
+            select = True
+            player.current_location = room[player.current_location].e_to.name
+        except:
+            print("You cannot move in that direction")
+    elif cmd in cmd_list and cmd == 's':
+        try:
+            select = True
+            player.current_location = room[player.current_location].s_to.name
+        except:
+            print("You cannot move in that direction")
+    elif cmd in cmd_list and cmd == 'q':
+        print("See you next time!")
+        game = False
+        break
+
 
 # Write a loop that:
 #
