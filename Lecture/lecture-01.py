@@ -1,4 +1,6 @@
 from category import Category
+from lecture import Sneaker
+from lecture import SoccerBall
 
 
 class Store:
@@ -32,7 +34,6 @@ baseball_category = Category("Baseball", "Blue Jays Fans only", [])
 basketball_category = Category("Basketball", "Indoor and outdoor products", [])
 football_category = Category("Football", "The american kind", [])
 soccer_category = Category("Soccer", "The real football", [])
-​
 sports_store = Store("Gander Mountain", [
     running_category, baseball_category, basketball_category, football_category, soccer_category])
 choice = -1
@@ -53,7 +54,5 @@ while True:
             print(chosen_category)
         else:
             print("The number is out of range")
-​
-except ValueError:
-    print("Please enter a valid number")
-​
+    except ValueError:
+        print("Please enter a valid number")
