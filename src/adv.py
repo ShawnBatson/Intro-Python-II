@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from item import Item
+from item import Treasure
 
 # Declare all the rooms
 
@@ -36,8 +37,11 @@ player = Player("Shawn", outside)
 # adding items to the rooms?
 torch = Item("torch", "this gives off an immense amount of light")
 
-outside.items.append(torch)
+treasure_chest = Treasure(
+    "Treasure Chest", """This is full to the brim of gold and jewels. The entire thing looks like it might be worth quite a bit""", "100 gold")
 
+outside.items.append(torch)
+treasure.items.append(treasure_chest)
 
 while True:
 
